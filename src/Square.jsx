@@ -5,9 +5,10 @@ import './index.css'
 export default function Square() {
     const [squares,setSqaures] = useState(Array(9).fill(null))
     console.log(squares)
-    function handleClick(){
+    
+    function handleClick(i){
         const nxtSqaure = squares.slice() ;
-        nxtSqaure[0] = "X" ;
+        nxtSqaure[i] = "X" ;
         setSqaures(nxtSqaure);
     }
 
