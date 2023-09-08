@@ -3,31 +3,34 @@ import { useState } from 'react'
 import './index.css'
 
 export default function Square() {
-    function Board() {
-        const [value, setValue] = useState(null)
+    const [squares,setSqaures] = useState(Array(9).fill(null))
+    console.log(squares)
+    function handleClick(){
+        const nxtSqaure = squares.slice() ;
+        nxtSqaure[0] = "X" ;
+        setSqaures(nxtSqaure);
+    }
 
-        function onClickHandlers() {
-            setValue('X')
-        }
-        return <button className="font-bold border-[1px]  border-black  p-10" onClick={onClickHandlers}>{value}</button>
+    function Board({value,onSquareClick}) {
+        return <button className="font-bold border-[1px]  border-black  p-10" onClick={onSquareClick}>{value}</button>
     }
     return <>
         <div className='flex justify-center items-center  h-screen'>
             <div>
                 <div>
-                    <Board ></Board>
-                    <Board ></Board>
-                    <Board ></Board>
+                    <Board value={squares[0]} onSquareClick={handleClick}></Board>
+                    <Board  value={squares[1]} onSquareClick={handleClick}></Board>
+                    <Board  value={squares[2]} onSquareClick={handleClick} ></Board>
                 </div>
                 <div>
-                    <Board  ></Board>
-                    <Board ></Board>
-                    <Board ></Board>
+                    <Board  value={squares[3]}  onSquareClick={handleClick} ></Board>
+                    <Board  value={squares[4]} onSquareClick={handleClick} ></Board>
+                    <Board  value={squares[5]} onSquareClick={handleClick} ></Board>
                 </div>
                 <div>
-                    <Board ></Board>
-                    <Board ></Board>
-                    <Board ></Board>
+                    <Board  value={squares[6]} onSquareClick={handleClick} ></Board>
+                    <Board  value={squares[7]} onSquareClick={handleClick} ></Board>
+                    <Board  value={squares[8]} onSquareClick={handleClick} ></Board>
                 </div>
             </div>
         </div>
